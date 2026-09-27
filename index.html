@@ -360,7 +360,7 @@
       border: 1px solid var(--card-border);
     }
 
-    /* Upload Modal */
+    /* Modals */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -368,8 +368,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
       z-index: 200;
       justify-content: center;
       align-items: center;
@@ -385,6 +385,11 @@
       max-height: 90vh;
       overflow-y: auto;
       padding: 2rem;
+    }
+
+    .password-card {
+      max-width: 400px;
+      text-align: center;
     }
 
     .modal-header {
@@ -406,6 +411,7 @@
 
     .form-group {
       margin-bottom: 1.25rem;
+      text-align: left;
     }
 
     .form-group label {
@@ -439,6 +445,13 @@
       border-color: var(--blood-red);
     }
 
+    .error-msg {
+      color: #ff4d61;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      display: none;
+    }
+
     /* Ambient Audio status */
     .audio-btn.playing {
       background: var(--blood-red);
@@ -464,8 +477,8 @@
       <button class="btn btn-outline audio-btn" id="ambient-toggle" onclick="toggleAtmosphereAudio()">
         🔊 திகில் இசை
       </button>
-      <button class="btn btn-primary" onclick="openUploadModal()">
-        + கதை எழுது
+      <button class="btn btn-primary" onclick="verifyAdminAccess()">
+        🔒 + கதை எழுது
       </button>
     </div>
   </header>
@@ -515,6 +528,26 @@
 
     <div class="reader-content" id="reader-body"></div>
   </section>
+
+  <!-- Password Verification Modal -->
+  <div class="modal-overlay" id="password-modal">
+    <div class="modal-card password-card">
+      <div class="modal-header">
+        <h3 style="font-weight: 700;">நிர்வாகி கடவுச்சொல்</h3>
+        <button class="close-btn" onclick="closePasswordModal()">&times;</button>
+      </div>
+      <form onsubmit="handlePasswordCheck(event)">
+        <div class="form-group">
+          <label>ரகசிய கடவுச்சொல்லை உள்ளிடவும்:</label>
+          <input type="password" id="admin-pass" required placeholder="Password">
+          <div class="error-msg" id="pass-error">தவறான கடவுச்சொல்! அணுகல் மறுக்கப்பட்டது.</div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 10px;">
+          உள்நுழை (Login)
+        </button>
+      </form>
+    </div>
+  </div>
 
   <!-- Upload Modal -->
   <div class="modal-overlay" id="upload-modal">
@@ -606,6 +639,7 @@
     let currentFontSize = 1.15;
     let audioCtx = null;
     let isPlayingAudio = false;
+    let isAuthenticated = false;
 
     // Save to LocalStorage
     function saveStories() {
@@ -673,6 +707,35 @@
       renderStories(filtered);
     }
 
+    // Password & Admin Security
+    function verifyAdminAccess() {
+      if (isAuthenticated) {
+        openUploadModal();
+      } else {
+        document.getElementById('pass-error').style.display = 'none';
+        document.getElementById('admin-pass').value = '';
+        document.getElementById('password-modal').style.display = 'flex';
+      }
+    }
+
+    function closePasswordModal() {
+      document.getElementById('password-modal').style.display = 'none';
+    }
+
+    function handlePasswordCheck(e) {
+      e.preventDefault();
+      const enteredPassword = document.getElementById('admin-pass').value;
+      
+      // Strict Password Check
+      if (enteredPassword === 'Baladheena@123') {
+        isAuthenticated = true;
+        closePasswordModal();
+        openUploadModal();
+      } else {
+        document.getElementById('pass-error').style.display = 'block';
+      }
+    }
+
     // Modal controls
     function openUploadModal() {
       document.getElementById('upload-modal').style.display = 'flex';
@@ -708,6 +771,7 @@
       renderStories(stories);
       closeUploadModal();
       document.getElementById('story-form').reset();
+      alert('கதை வெற்றிகரமாகப் பதிவேற்றப்பட்டது!');
     }
 
     // Reader Mode
@@ -745,19 +809,17 @@
       document.getElementById('progress-bar').style.width = scrolled + '%';
     };
 
-    // Eerie Drone Audio Synthesizer (No external MP3 required)
+    // Eerie Drone Audio Synthesizer
     function toggleAtmosphereAudio() {
       const btn = document.getElementById('ambient-toggle');
       if (!isPlayingAudio) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         
-        // Low heartbeat / drone
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(45, audioCtx.currentTime); // Deep horror frequency
+        osc.frequency.setValueAtTime(45, audioCtx.currentTime);
         
-        // Filter for dark ambient sound
         const filter = audioCtx.createBiquadFilter();
         filter.type = 'lowpass';
         filter.frequency.setValueAtTime(120, audioCtx.currentTime);
