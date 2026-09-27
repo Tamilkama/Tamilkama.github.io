@@ -1,14 +1,19 @@
+```html
 <!DOCTYPE html>
 <html lang="ta">
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TamilKama Stories</title>
+    <title>TamilKama - தமிழ் காதல் கதைகள்</title>
 
-    <meta name="description" content="உண்மையான காதல் மற்றும் உறவுகளின் கதைகள்.">
+    <meta name="description"
+          content="தமிழ் வயது வந்தோருக்கான காதல், உறவு மற்றும் உணர்வுபூர்வமான கதைகள்.">
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -16,186 +21,552 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #0b0b0b;
+            font-family: Arial, "Noto Sans Tamil", sans-serif;
+            background: #080808;
             color: #ffffff;
         }
 
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
-            background: #111111;
-            padding: 20px;
+            background:
+                radial-gradient(circle at 20% 20%, #5a0035 0%, transparent 35%),
+                radial-gradient(circle at 80% 20%, #35005a 0%, transparent 35%),
+                linear-gradient(135deg, #13000c, #080808, #12000f);
+
+            padding: 45px 20px;
             text-align: center;
-            border-bottom: 1px solid #333;
+
+            border-bottom: 1px solid #292929;
+
+            position: relative;
+            overflow: hidden;
         }
 
         header h1 {
-            font-size: 32px;
-            color: #ff3333;
-            margin-bottom: 8px;
+            font-size: 46px;
+            font-weight: 900;
+
+            background: linear-gradient(
+                90deg,
+                #ff1769,
+                #ff5c9a,
+                #b52cff
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            margin-bottom: 12px;
         }
 
         header p {
-            color: #aaa;
-            font-size: 15px;
+            color: #e0bccc;
+            font-size: 17px;
         }
 
+        /* =========================
+           NAVIGATION
+        ========================= */
+
         nav {
-            background: #161616;
-            padding: 12px;
+            background: #111111;
+
+            padding: 14px 10px;
+
             text-align: center;
+
+            border-bottom: 1px solid #292929;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+
             overflow-x: auto;
             white-space: nowrap;
         }
 
         nav a {
-            color: #ddd;
+            display: inline-block;
+
+            color: #dddddd;
+
             text-decoration: none;
-            margin: 0 12px;
+
+            margin: 0 13px;
+
             font-size: 14px;
+
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: #ff3333;
+            color: #ff3c82;
         }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
 
         .container {
-            max-width: 1100px;
+            max-width: 1150px;
+
             margin: auto;
-            padding: 25px 15px;
+
+            padding: 30px 18px 60px;
         }
 
+        /* =========================
+           SEARCH
+        ========================= */
+
         .search {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         .search input {
             width: 100%;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            background: #181818;
+
+            padding: 16px 20px;
+
+            border-radius: 30px;
+
+            border: 1px solid #333333;
+
+            background: #161616;
+
             color: white;
-            font-size: 16px;
+
+            font-size: 15px;
+
             outline: none;
         }
 
-        .section-title {
-            font-size: 24px;
-            margin-bottom: 20px;
+        .search input:focus {
+            border-color: #ff337b;
+
+            box-shadow:
+                0 0 20px rgba(255, 30, 110, 0.15);
         }
+
+        /* =========================
+           WELCOME BOX
+        ========================= */
+
+        .welcome {
+            padding: 28px;
+
+            margin-bottom: 38px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(255, 0, 100, 0.15),
+                    rgba(130, 0, 255, 0.12)
+                ),
+                #121216;
+
+            border: 1px solid #302632;
+        }
+
+        .welcome h2 {
+            font-size: 25px;
+
+            margin-bottom: 10px;
+
+            color: #ff4c8c;
+        }
+
+        .welcome p {
+            color: #aaaaaa;
+
+            line-height: 1.8;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title {
+            font-size: 27px;
+
+            margin-bottom: 22px;
+        }
+
+        .section-title span {
+            color: #ff3b7e;
+        }
+
+        /* =========================
+           STORY GRID
+        ========================= */
 
         .stories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 22px;
         }
 
+        /* =========================
+           STORY CARD
+        ========================= */
+
         .story-card {
-            background: #151515;
-            border-radius: 12px;
-            overflow: hidden;
+            background: #141414;
+
             border: 1px solid #292929;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
             transition: 0.3s;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.35);
         }
 
         .story-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff3333;
+            transform: translateY(-6px);
+
+            border-color: #ff347b;
+
+            box-shadow:
+                0 15px 35px rgba(255,0,100,0.12);
         }
+
+        /* =========================
+           STORY IMAGE
+        ========================= */
 
         .story-image {
             width: 100%;
+
             height: 190px;
-            object-fit: cover;
-            background: #222;
+
+            position: relative;
+
+            background:
+                radial-gradient(
+                    circle at 25% 30%,
+                    #ff2b77,
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 75% 70%,
+                    #7226ff,
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #280014,
+                    #0b0018
+                );
         }
 
+        .story-image::after {
+            content: "TAMILKAMA";
+
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            font-size: 28px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            color: rgba(255,255,255,0.10);
+        }
+
+        /* =========================
+           STORY CONTENT
+        ========================= */
+
         .story-content {
-            padding: 18px;
+            padding: 20px;
         }
 
         .category {
-            color: #ff3333;
-            font-size: 13px;
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff1769,
+                    #9227ff
+                );
+
+            font-size: 10px;
+
             font-weight: bold;
-            margin-bottom: 8px;
+
+            margin-bottom: 12px;
         }
 
         .story-content h3 {
-            font-size: 20px;
+            font-size: 19px;
+
+            line-height: 1.5;
+
             margin-bottom: 10px;
         }
 
         .story-content p {
-            color: #aaa;
-            line-height: 1.6;
+            color: #999999;
+
             font-size: 14px;
-            margin-bottom: 15px;
+
+            line-height: 1.7;
+
+            margin-bottom: 18px;
         }
+
+        /* =========================
+           READ BUTTON
+        ========================= */
 
         .read-btn {
             display: inline-block;
-            background: #ff3333;
+
+            padding: 10px 17px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff1769,
+                    #9227ff
+                );
+
             color: white;
-            padding: 10px 16px;
-            border-radius: 6px;
+
             text-decoration: none;
-            font-size: 14px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
         }
 
         .read-btn:hover {
-            background: #cc2222;
+            transform: scale(1.04);
+
+            box-shadow:
+                0 8px 20px rgba(255,0,110,0.2);
         }
+
+        /* =========================
+           AGE NOTICE
+        ========================= */
+
+        .notice {
+            margin-top: 45px;
+
+            padding: 18px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            background: #151515;
+
+            border: 1px solid #282828;
+
+            color: #777777;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            margin-top: 50px;
-            padding: 25px;
+            padding: 30px 20px;
+
             text-align: center;
-            background: #111;
-            color: #777;
-            font-size: 13px;
+
+            background: #0d0d0d;
+
+            border-top: 1px solid #252525;
+
+            color: #666666;
+
+            font-size: 12px;
+
+            line-height: 1.8;
         }
 
+        footer strong {
+            color: #ff397d;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 26px;
+
+            header {
+                padding: 35px 15px;
             }
 
-            .section-title {
+            header h1 {
+                font-size: 34px;
+            }
+
+            header p {
+                font-size: 14px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .container {
+                padding: 24px 13px 45px;
+            }
+
+            .welcome {
+                padding: 22px;
+            }
+
+            .welcome h2 {
                 font-size: 21px;
             }
 
-            .story-image {
-                height: 180px;
+            .section-title {
+                font-size: 23px;
             }
+
+            .stories {
+                grid-template-columns: 1fr;
+            }
+
+            .story-image {
+                height: 200px;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
-    <h1>TamilKama</h1>
-    <p>உண்மையான காமக் கதைகள்</p>
+
+    <h1>TamilKama Stories</h1>
+
+    <p>
+        தமிழ் வயது வந்தோருக்கான காதல் மற்றும் உறவுக் கதைகள்
+    </p>
+
 </header>
 
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
+
     <a href="#">Home</a>
-    <a href="#">காதல்</a>
-    <a href="#">உறவுகள்</a>
-    <a href="#">மர்மம்</a>
-    <a href="#">Real Stories</a>
+
+    <a href="#">காதல் கதைகள்</a>
+
+    <a href="#">உறவுக் கதைகள்</a>
+
+    <a href="#">காதல் அனுபவங்கள்</a>
+
+    <a href="#">உண்மைக் கதைகள்</a>
+
+    <a href="#">18+ Stories</a>
+
 </nav>
+
+
+<!-- =========================
+     MAIN
+========================= -->
 
 <div class="container">
 
+
+    <!-- SEARCH -->
+
     <div class="search">
-        <input type="text" placeholder="🔍 Search stories...">
+
+        <input
+            type="text"
+            placeholder="🔍 கதையை தேடுங்கள்..."
+        >
+
     </div>
 
-    <h2 class="section-title">Latest Stories</h2>
+
+    <!-- WELCOME -->
+
+    <div class="welcome">
+
+        <h2>
+            ❤️ TamilKama Stories
+        </h2>
+
+        <p>
+            தமிழ் மொழியில் காதல், உறவுகள் மற்றும்
+            வயது வந்தோருக்கான உணர்வுபூர்வமான
+            கதைகளை படிக்கலாம்.
+            புதிய கதைகள் தொடர்ந்து சேர்க்கப்படும்.
+        </p>
+
+    </div>
+
+
+    <!-- SECTION -->
+
+    <h2 class="section-title">
+
+        Latest <span>Stories</span>
+
+    </h2>
+
+
+    <!-- STORY CARDS -->
 
     <div class="stories">
+
 
         <!-- STORY 1 -->
 
@@ -205,13 +576,19 @@
 
             <div class="story-content">
 
-                <div class="category">RELATIONSHIP</div>
+                <div class="category">
+                    18+ STORY
+                </div>
 
-                <h3>நண்பனின் அம்மாவுடன் நடந்த எதிர்பாராத சம்பவம்</h3>
+                <h3>
+                    எதிர்பாராத ஒரு சந்திப்பு
+                </h3>
 
                 <p>
-                    எதிர்பாராத ஒரு சூழ்நிலையில் நடந்த சம்பவம்,
-                    அவர்களின் உறவையே மாற்றியமைத்தது.
+                    பல வருடங்களுக்குப் பிறகு நடந்த
+                    ஒரு எதிர்பாராத சந்திப்பு,
+                    அவர்களின் வாழ்க்கையில்
+                    புதிய திருப்பத்தை ஏற்படுத்தியது.
                 </p>
 
                 <a href="#" class="read-btn">
@@ -231,14 +608,19 @@
 
             <div class="story-content">
 
-                <div class="category">LOVE STORY</div>
+                <div class="category">
+                    LOVE STORY
+                </div>
 
-                <h3>அக்காவுடன் நடந்த அந்த நாள்</h3>
+                <h3>
+                    அக்காவுடன் நடந்த அந்த நாள்
+                </h3>
 
                 <p>
-                    குடும்பத்தில் நடந்த ஒரு எதிர்பாராத சம்பவம்,
-                    நீண்ட நாட்களாக மறைந்திருந்த ஒரு உண்மையை
-                    வெளிச்சத்திற்கு கொண்டு வந்தது.
+                    மறக்க முடியாத ஒரு நாள்,
+                    குடும்பத்திற்குள் மறைந்திருந்த
+                    ஒரு உண்மையை வெளிச்சத்திற்கு
+                    கொண்டு வந்தது.
                 </p>
 
                 <a href="#" class="read-btn">
@@ -258,13 +640,18 @@
 
             <div class="story-content">
 
-                <div class="category">MYSTERY</div>
+                <div class="category">
+                    RELATIONSHIP
+                </div>
 
-                <h3>சித்தப்பா இல்லாத நேரத்தில் நடந்த சம்பவம்</h3>
+                <h3>
+                    அந்த வீட்டில் நடந்த ரகசியம்
+                </h3>
 
                 <p>
-                    வீட்டில் யாரும் எதிர்பார்க்காத நேரத்தில்
-                    நடந்த ஒரு சம்பவம் பல கேள்விகளை எழுப்பியது.
+                    யாருக்கும் தெரியாமல் நடந்த
+                    ஒரு சம்பவம், பின்னர் பல
+                    கேள்விகளை எழுப்பியது.
                 </p>
 
                 <a href="#" class="read-btn">
@@ -275,13 +662,132 @@
 
         </div>
 
+
+        <!-- STORY 4 -->
+
+        <div class="story-card">
+
+            <div class="story-image"></div>
+
+            <div class="story-content">
+
+                <div class="category">
+                    REAL STORY
+                </div>
+
+                <h3>
+                    அந்த இரவு நடந்தது என்ன?
+                </h3>
+
+                <p>
+                    சாதாரணமாக தொடங்கிய அந்த இரவு,
+                    எதிர்பாராத ஒரு திருப்பத்துடன்
+                    முடிந்தது.
+                </p>
+
+                <a href="#" class="read-btn">
+                    Read Story →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- STORY 5 -->
+
+        <div class="story-card">
+
+            <div class="story-image"></div>
+
+            <div class="story-content">
+
+                <div class="category">
+                    ROMANCE
+                </div>
+
+                <h3>
+                    மறக்க முடியாத அந்த சந்திப்பு
+                </h3>
+
+                <p>
+                    ஒரு சிறிய சந்திப்பு எப்படி
+                    நீண்ட நாட்கள் நினைவில்
+                    நிற்கும் கதையாக மாறியது?
+                </p>
+
+                <a href="#" class="read-btn">
+                    Read Story →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- STORY 6 -->
+
+        <div class="story-card">
+
+            <div class="story-image"></div>
+
+            <div class="story-content">
+
+                <div class="category">
+                    MYSTERY
+                </div>
+
+                <h3>
+                    கதவுக்கு பின்னால் இருந்த ரகசியம்
+                </h3>
+
+                <p>
+                    பல நாட்களாக மூடப்பட்டிருந்த
+                    அந்த அறைக்குள் இருந்த ரகசியம்
+                    எதிர்பாராத நேரத்தில் வெளிவந்தது.
+                </p>
+
+                <a href="#" class="read-btn">
+                    Read Story →
+                </a>
+
+            </div>
+
+        </div>
+
+
     </div>
+
+
+    <!-- NOTICE -->
+
+    <div class="notice">
+
+        🔞 இந்த website-ல் வயது வந்தோருக்கான
+        காதல் மற்றும் உறவு சார்ந்த கதைகள் இடம்பெறலாம்.
+        18 வயதுக்கு மேற்பட்டவர்களுக்கான உள்ளடக்கம்.
+
+    </div>
+
 
 </div>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-    © 2026 TamilKama Stories. All Rights Reserved.
+
+    © 2026 <strong>TamilKama Stories</strong>
+
+    <br>
+
+    All Rights Reserved.
+
 </footer>
+
 
 </body>
 </html>
+```
