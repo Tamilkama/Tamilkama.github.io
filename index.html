@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>இரவுக்கதை - Tamil Crime & Horror Stories</title>
-  <meta name="description" content="தமிழ் க்ரைம், அமானுஷ்யம், திகில் மற்றும் மர்மக் கதைகளின் பிரத்யேக தளம்.">
+  <title>இரவுக்கதை - Tamil Stories</title>
+  <meta name="description" content="தமிழ் கதைகளின் பிரத்யேக தளம்.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@400;600;700;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
@@ -72,8 +72,18 @@
       text-decoration: none;
     }
 
-    .logo-icon {
-      font-size: 1.8rem;
+    .badge-18 {
+      background: var(--blood-red);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .logo-text h1 {
@@ -131,14 +141,12 @@
       border-color: var(--blood-red);
     }
 
-    /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 2rem 1.5rem;
     }
 
-    /* Hero section */
     .hero {
       text-align: center;
       padding: 3rem 1rem;
@@ -153,7 +161,6 @@
       font-weight: 800;
       margin-bottom: 0.8rem;
       color: #fff;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
 
     .hero p {
@@ -163,7 +170,6 @@
       font-size: 1.05rem;
     }
 
-    /* Search & Filter */
     .controls {
       display: flex;
       flex-wrap: wrap;
@@ -176,7 +182,6 @@
     .search-box {
       flex: 1;
       min-width: 260px;
-      position: relative;
     }
 
     .search-box input {
@@ -217,7 +222,6 @@
       border-color: var(--blood-red);
     }
 
-    /* Story Grid */
     .story-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -233,6 +237,7 @@
       flex-direction: column;
       cursor: pointer;
       transition: transform 0.2s, border-color 0.2s;
+      position: relative;
     }
 
     .story-card:hover {
@@ -268,11 +273,9 @@
       border-radius: 4px;
       font-weight: 700;
       text-transform: uppercase;
+      background: rgba(201, 24, 43, 0.2);
+      color: #ff5266;
     }
-
-    .badge-crime { background: rgba(243, 156, 18, 0.2); color: var(--accent-crime); }
-    .badge-horror { background: rgba(155, 89, 182, 0.2); color: var(--accent-horror); }
-    .badge-mystery { background: rgba(201, 24, 43, 0.2); color: #ff5266; }
 
     .read-time {
       font-size: 0.75rem;
@@ -307,6 +310,40 @@
       padding-top: 0.75rem;
       font-size: 0.8rem;
       color: var(--text-muted);
+    }
+
+    /* Admin Action Buttons */
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--card-border);
+    }
+
+    .btn-action {
+      flex: 1;
+      padding: 5px 8px;
+      font-size: 0.78rem;
+      border-radius: 4px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.03);
+      color: #ccc;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action.edit:hover {
+      background: #2a3b5c;
+      border-color: #3d68b2;
+      color: #fff;
+    }
+
+    .btn-action.delete:hover {
+      background: #4a151b;
+      border-color: var(--blood-red);
+      color: #ff7887;
     }
 
     /* Reader View */
@@ -360,7 +397,7 @@
       border: 1px solid var(--card-border);
     }
 
-    /* Modals */
+    /* Modal */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -370,7 +407,7 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(6px);
-      z-index: 200;
+      z-index: 99999;
       justify-content: center;
       align-items: center;
       padding: 1rem;
@@ -385,11 +422,6 @@
       max-height: 90vh;
       overflow-y: auto;
       padding: 2rem;
-    }
-
-    .password-card {
-      max-width: 400px;
-      text-align: center;
     }
 
     .modal-header {
@@ -411,7 +443,6 @@
 
     .form-group {
       margin-bottom: 1.25rem;
-      text-align: left;
     }
 
     .form-group label {
@@ -445,14 +476,6 @@
       border-color: var(--blood-red);
     }
 
-    .error-msg {
-      color: #ff4d61;
-      font-size: 0.85rem;
-      margin-top: 8px;
-      display: none;
-    }
-
-    /* Ambient Audio status */
     .audio-btn.playing {
       background: var(--blood-red);
       color: white;
@@ -467,10 +490,10 @@
   <!-- Header -->
   <header>
     <div class="logo" onclick="showHome()">
-      <span class="logo-icon">🩸</span>
+      <span class="badge-18">🔞 18+</span>
       <div class="logo-text">
         <h1>இரவுக்கதை</h1>
-        <span>CRIME & HORROR</span>
+        <span>STORIES</span>
       </div>
     </div>
     <div class="nav-actions">
@@ -486,8 +509,8 @@
   <!-- Main Feed Container -->
   <main class="container" id="feed-view">
     <section class="hero">
-      <h2>இருளின் நடுவே உறையும் மர்மங்கள்</h2>
-      <p>நடுநிசி பயங்கள், விடைதெரியாத கொடூர குற்றங்கள் மற்றும் உண்மையான அமானுஷ்ய சம்பவங்களின் உறைவிடம்.</p>
+      <h2>மர்மங்களும் உண்மைச் சம்பவங்களும்</h2>
+      <p>நடுநிசி பயங்கள் மற்றும் விடைதெரியாத மர்மக் கதைகளின் உறைவிடம்.</p>
     </section>
 
     <!-- Controls -->
@@ -496,10 +519,17 @@
         <input type="text" id="search-input" placeholder="கதைகளை தேடுக..." oninput="handleSearch()">
       </div>
       <div class="filter-pills">
-        <span class="pill active" onclick="filterCategory('All')">அனைத்தும்</span>
-        <span class="pill" onclick="filterCategory('Crime')">🔍 க்ரைம்</span>
-        <span class="pill" onclick="filterCategory('Horror')">👻 அமானுஷ்யம்</span>
-        <span class="pill" onclick="filterCategory('Mystery')">⏳ மர்மம்</span>
+        <span class="pill active" onclick="filterCategory('All')">🔍அனைத்தும்</span>
+        <span class="pill" onclick="filterCategory('Mom & Son')">⏳ அம்மா</span>
+        <span class="pill" onclick="filterCategory('Sister')">⏳ அக்கா & தங்கச்சி</span>
+        <span class="pill" onclick="filterCategory('Brother')">⏳ அண்ணா & தம்பி</span>
+        <span class="pill" onclick="filterCategory('Mother in Law')">⏳ சித்தி</span>
+        <span class="pill" onclick="filterCategory('Dad')">⏳ அப்பா</span>
+        <span class="pill" onclick="filterCategory('Granny')">⏳ கிழவி (பாட்டி)</span>
+        <span class="pill" onclick="filterCategory('Grandpa')">⏳ தாத்தா</span>
+        <span class="pill" onclick="filterCategory('Wife')">⏳ மனைவி</span>
+        <span class="pill" onclick="filterCategory('Aunty')">⏳ அத்தை</span>
+        <span class="pill" onclick="filterCategory('Periyamma')">⏳ பெரியம்மா</span>
       </div>
     </div>
 
@@ -529,37 +559,18 @@
     <div class="reader-content" id="reader-body"></div>
   </section>
 
-  <!-- Password Verification Modal -->
-  <div class="modal-overlay" id="password-modal">
-    <div class="modal-card password-card">
-      <div class="modal-header">
-        <h3 style="font-weight: 700;">நிர்வாகி கடவுச்சொல்</h3>
-        <button class="close-btn" onclick="closePasswordModal()">&times;</button>
-      </div>
-      <form onsubmit="handlePasswordCheck(event)">
-        <div class="form-group">
-          <label>ரகசிய கடவுச்சொல்லை உள்ளிடவும்:</label>
-          <input type="password" id="admin-pass" required placeholder="Password">
-          <div class="error-msg" id="pass-error">தவறான கடவுச்சொல்! அணுகல் மறுக்கப்பட்டது.</div>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 10px;">
-          உள்நுழை (Login)
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Upload Modal -->
+  <!-- Upload & Edit Modal -->
   <div class="modal-overlay" id="upload-modal">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 style="font-weight: 700;">புதிய கதையைப் பகிருங்கள்</h3>
+        <h3 id="modal-heading" style="font-weight: 700;">புதிய கதையைப் பகிருங்கள் (Admin)</h3>
         <button class="close-btn" onclick="closeUploadModal()">&times;</button>
       </div>
       <form id="story-form" onsubmit="handleStorySubmit(event)">
+        <input type="hidden" id="editing-story-id" value="">
         <div class="form-group">
           <label>கதையின் தலைப்பு</label>
-          <input type="text" id="form-title" required placeholder="உதா: 12-ஆம் எண் பங்களா">
+          <input type="text" id="form-title" required placeholder="தலைப்பை உள்ளிடவும்">
         </div>
         <div class="form-group">
           <label>எழுத்தாளர் பெயர்</label>
@@ -583,9 +594,9 @@
         </div>
         <div class="form-group">
           <label>முழுக் கதை</label>
-          <textarea id="form-content" required placeholder="உங்கள் திகில் அல்லது க்ரைம் கதையை இங்கு விரிவாக எழுதுங்கள்..."></textarea>
+          <textarea id="form-content" required placeholder="கதையை இங்கு எழுதுங்கள்..."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px;">
+        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px;">
           பதிவேற்று (Publish Story)
         </button>
       </form>
@@ -593,7 +604,6 @@
   </div>
 
   <script>
-    // Initial Seed Stories
     const initialStories = [
       {
         id: '1',
@@ -607,7 +617,7 @@
 
 1984 ஆம் ஆண்டுக்குப் பிறகு அந்த பங்களாவின் மரக் கதவை யாரும் தொட்டதில்லை. உள்ளே சென்ற நான்கு வனத்துறை அதிகாரிகள் என்ன ஆனார்கள் என்ற தகவல் இதுவரை யாரிடமும் இல்லை. 
 
-விசாரணைக்காகச் சென்ற இன்ஸ்பெக்டர் கார்த்திக் தனது டார்ச் லைட்டை எரிய வைத்தார். உள்ளே நுழையும் போதே பழைய ரத்த வாடையும் அழுகிய மரத்தின் துர்நாற்றமும் அடித்தது. சுவரில் ரத்தத்தால் எழுதப்பட்டிருந்த அந்த வாசகம் கார்த்திக்கின் முதுகெலும்பை உறைய வைத்தது:
+விசாரணைக்காகச் சென்ற இன்ஸ்பெக்டர் கார்த்திக் தனது டார்ச் லைட்டை எரிய வைத்தார். உள்ளே நுழையும் போதே பழைய ரத்த வாடையும் அழுகிய மரத்தின் துர்நாற்றமும் அடித்தது. சுவரில் எழுதப்பட்டிருந்த அந்த வாசகம் கார்த்திக்கின் முதுகெலும்பை உறைய வைத்தது:
 
 "இங்கிருந்து திரும்பிச் செல்ல எவனுக்கும் அனுமதியில்லை!"
 
@@ -633,20 +643,16 @@
       }
     ];
 
-    // State
     let stories = JSON.parse(localStorage.getItem('tamil_stories')) || initialStories;
     let currentCategory = 'All';
     let currentFontSize = 1.15;
     let audioCtx = null;
     let isPlayingAudio = false;
-    let isAuthenticated = false;
 
-    // Save to LocalStorage
     function saveStories() {
       localStorage.setItem('tamil_stories', JSON.stringify(stories));
     }
 
-    // Render Story Cards
     function renderStories(dataToRender = stories) {
       const grid = document.getElementById('story-grid');
       grid.innerHTML = '';
@@ -661,13 +667,11 @@
         card.className = 'story-card';
         card.onclick = () => openReader(story.id);
 
-        const badgeClass = story.category === 'Crime' ? 'badge-crime' : (story.category === 'Horror' ? 'badge-horror' : 'badge-mystery');
-
         card.innerHTML = `
           <img src="${story.image || 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80'}" class="story-thumb" alt="${story.title}">
           <div class="story-info">
             <div class="badge-row">
-              <span class="badge ${badgeClass}">${story.category}</span>
+              <span class="badge">${story.category}</span>
               <span class="read-time">${story.time || '5 நிமிடம்'}</span>
             </div>
             <h3 class="story-title">${story.title}</h3>
@@ -676,17 +680,23 @@
               <span>✍️ ${story.author}</span>
               <span>வாசிக்க →</span>
             </div>
+            <!-- Admin Edit & Delete Actions -->
+            <div class="card-actions">
+              <button class="btn-action edit" onclick="handleEditStory(event, '${story.id}')">✏️ திருத்து</button>
+              <button class="btn-action delete" onclick="handleDeleteStory(event, '${story.id}')">🗑️ நீக்கு</button>
+            </div>
           </div>
         `;
         grid.appendChild(card);
       });
     }
 
-    // Category Filter
     function filterCategory(cat) {
       currentCategory = cat;
       document.querySelectorAll('.pill').forEach(pill => pill.classList.remove('active'));
-      event.target.classList.add('active');
+      if (window.event && window.event.target) {
+        window.event.target.classList.add('active');
+      }
 
       if (cat === 'All') {
         renderStories(stories);
@@ -696,7 +706,6 @@
       }
     }
 
-    // Search
     function handleSearch() {
       const query = document.getElementById('search-input').value.toLowerCase();
       const filtered = stories.filter(s => 
@@ -707,74 +716,122 @@
       renderStories(filtered);
     }
 
-    // Password & Admin Security
+    // Password Check Function
+    function checkPassword(actionName) {
+      const pwd = prompt(`${actionName} செய்ய கடவுச்சொல்லை உள்ளிடவும் (Enter Password):`);
+      if (pwd === null) return false;
+      if (pwd.trim() === 'Baladheena@123') {
+        return true;
+      } else {
+        alert("தவறான கடவுச்சொல்! அனுமதி மறுக்கப்பட்டது.");
+        return false;
+      }
+    }
+
+    // Create New Story
     function verifyAdminAccess() {
-      if (isAuthenticated) {
+      if (checkPassword("புதிய கதை பதிவேற்றம்")) {
+        document.getElementById('editing-story-id').value = '';
+        document.getElementById('story-form').reset();
+        document.getElementById('modal-heading').innerText = 'புதிய கதையைப் பகிருங்கள் (Admin)';
+        document.getElementById('submit-btn').innerText = 'பதிவேற்று (Publish Story)';
         openUploadModal();
-      } else {
-        document.getElementById('pass-error').style.display = 'none';
-        document.getElementById('admin-pass').value = '';
-        document.getElementById('password-modal').style.display = 'flex';
       }
     }
 
-    function closePasswordModal() {
-      document.getElementById('password-modal').style.display = 'none';
-    }
+    // Edit Story
+    function handleEditStory(e, storyId) {
+      e.stopPropagation(); // Prevents opening reader mode
+      if (checkPassword("கதையைத் திருத்தம்")) {
+        const story = stories.find(s => s.id === storyId);
+        if (!story) return;
 
-    function handlePasswordCheck(e) {
-      e.preventDefault();
-      const enteredPassword = document.getElementById('admin-pass').value;
-      
-      // Strict Password Check
-      if (enteredPassword === 'Baladheena@123') {
-        isAuthenticated = true;
-        closePasswordModal();
+        document.getElementById('editing-story-id').value = story.id;
+        document.getElementById('form-title').value = story.title;
+        document.getElementById('form-author').value = story.author;
+        document.getElementById('form-category').value = story.category;
+        document.getElementById('form-image').value = story.image || '';
+        document.getElementById('form-excerpt').value = story.excerpt;
+        document.getElementById('form-content').value = story.content;
+
+        document.getElementById('modal-heading').innerText = 'கதையைத் திருத்து (Edit Story)';
+        document.getElementById('submit-btn').innerText = 'மாற்றங்களை சேமி (Save Changes)';
         openUploadModal();
-      } else {
-        document.getElementById('pass-error').style.display = 'block';
       }
     }
 
-    // Modal controls
+    // Delete Story
+    function handleDeleteStory(e, storyId) {
+      e.stopPropagation(); // Prevents opening reader mode
+      if (checkPassword("கதையை நீக்கம்")) {
+        if (confirm("நிச்சயமாக இந்தக் கதையை நீக்க விரும்புகிறீர்களா?")) {
+          stories = stories.filter(s => s.id !== storyId);
+          saveStories();
+          renderStories(stories);
+          alert("கதை வெற்றிகரமாக நீக்கப்பட்டது!");
+        }
+      }
+    }
+
     function openUploadModal() {
       document.getElementById('upload-modal').style.display = 'flex';
     }
 
     function closeUploadModal() {
       document.getElementById('upload-modal').style.display = 'none';
+      document.getElementById('story-form').reset();
+      document.getElementById('editing-story-id').value = '';
     }
 
-    // Submit new story
+    // Handle Form Submit (Both Add and Edit)
     function handleStorySubmit(e) {
       e.preventDefault();
+      const editId = document.getElementById('editing-story-id').value;
       const title = document.getElementById('form-title').value;
       const author = document.getElementById('form-author').value;
       const category = document.getElementById('form-category').value;
       const image = document.getElementById('form-image').value;
       const excerpt = document.getElementById('form-excerpt').value;
       const content = document.getElementById('form-content').value;
+      const time = Math.ceil(content.split(' ').length / 150) + ' நிமிடம்';
 
-      const newStory = {
-        id: Date.now().toString(),
-        title,
-        author,
-        category,
-        image: image || 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80',
-        excerpt,
-        content,
-        time: Math.ceil(content.split(' ').length / 150) + ' நிமிடம்'
-      };
+      if (editId) {
+        // Edit existing story
+        const index = stories.findIndex(s => s.id === editId);
+        if (index !== -1) {
+          stories[index] = {
+            ...stories[index],
+            title,
+            author,
+            category,
+            image: image || stories[index].image,
+            excerpt,
+            content,
+            time
+          };
+          alert('கதை வெற்றிகரமாக மாற்றியமைக்கப்பட்டது!');
+        }
+      } else {
+        // Add new story
+        const newStory = {
+          id: Date.now().toString(),
+          title,
+          author,
+          category,
+          image: image || 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80',
+          excerpt,
+          content,
+          time
+        };
+        stories.unshift(newStory);
+        alert('புதிய கதை வெற்றிகரமாகப் பதிவேற்றப்பட்டது!');
+      }
 
-      stories.unshift(newStory);
       saveStories();
       renderStories(stories);
       closeUploadModal();
-      document.getElementById('story-form').reset();
-      alert('கதை வெற்றிகரமாகப் பதிவேற்றப்பட்டது!');
     }
 
-    // Reader Mode
     function openReader(storyId) {
       const story = stories.find(s => s.id === storyId);
       if (!story) return;
@@ -801,7 +858,6 @@
       document.getElementById('reader-body').style.fontSize = currentFontSize + 'rem';
     }
 
-    // Scroll Progress
     window.onscroll = function() {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -809,7 +865,6 @@
       document.getElementById('progress-bar').style.width = scrolled + '%';
     };
 
-    // Eerie Drone Audio Synthesizer
     function toggleAtmosphereAudio() {
       const btn = document.getElementById('ambient-toggle');
       if (!isPlayingAudio) {
@@ -845,7 +900,6 @@
       }
     }
 
-    // Initial Load
     renderStories(stories);
   </script>
 </body>
