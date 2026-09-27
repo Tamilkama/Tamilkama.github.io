@@ -1,793 +1,790 @@
-```html
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TamilKama - தமிழ் காதல் கதைகள்</title>
-
-    <meta name="description"
-          content="தமிழ் வயது வந்தோருக்கான காதல், உறவு மற்றும் உணர்வுபூர்வமான கதைகள்.">
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, "Noto Sans Tamil", sans-serif;
-            background: #080808;
-            color: #ffffff;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            background:
-                radial-gradient(circle at 20% 20%, #5a0035 0%, transparent 35%),
-                radial-gradient(circle at 80% 20%, #35005a 0%, transparent 35%),
-                linear-gradient(135deg, #13000c, #080808, #12000f);
-
-            padding: 45px 20px;
-            text-align: center;
-
-            border-bottom: 1px solid #292929;
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        header h1 {
-            font-size: 46px;
-            font-weight: 900;
-
-            background: linear-gradient(
-                90deg,
-                #ff1769,
-                #ff5c9a,
-                #b52cff
-            );
-
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            margin-bottom: 12px;
-        }
-
-        header p {
-            color: #e0bccc;
-            font-size: 17px;
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            background: #111111;
-
-            padding: 14px 10px;
-
-            text-align: center;
-
-            border-bottom: 1px solid #292929;
-
-            position: sticky;
-            top: 0;
-
-            z-index: 100;
-
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        nav a {
-            display: inline-block;
-
-            color: #dddddd;
-
-            text-decoration: none;
-
-            margin: 0 13px;
-
-            font-size: 14px;
-
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #ff3c82;
-        }
-
-        /* =========================
-           MAIN CONTAINER
-        ========================= */
-
-        .container {
-            max-width: 1150px;
-
-            margin: auto;
-
-            padding: 30px 18px 60px;
-        }
-
-        /* =========================
-           SEARCH
-        ========================= */
-
-        .search {
-            margin-bottom: 35px;
-        }
-
-        .search input {
-            width: 100%;
-
-            padding: 16px 20px;
-
-            border-radius: 30px;
-
-            border: 1px solid #333333;
-
-            background: #161616;
-
-            color: white;
-
-            font-size: 15px;
-
-            outline: none;
-        }
-
-        .search input:focus {
-            border-color: #ff337b;
-
-            box-shadow:
-                0 0 20px rgba(255, 30, 110, 0.15);
-        }
-
-        /* =========================
-           WELCOME BOX
-        ========================= */
-
-        .welcome {
-            padding: 28px;
-
-            margin-bottom: 38px;
-
-            border-radius: 18px;
-
-            background:
-                linear-gradient(
-                    120deg,
-                    rgba(255, 0, 100, 0.15),
-                    rgba(130, 0, 255, 0.12)
-                ),
-                #121216;
-
-            border: 1px solid #302632;
-        }
-
-        .welcome h2 {
-            font-size: 25px;
-
-            margin-bottom: 10px;
-
-            color: #ff4c8c;
-        }
-
-        .welcome p {
-            color: #aaaaaa;
-
-            line-height: 1.8;
-
-            font-size: 14px;
-        }
-
-        /* =========================
-           SECTION TITLE
-        ========================= */
-
-        .section-title {
-            font-size: 27px;
-
-            margin-bottom: 22px;
-        }
-
-        .section-title span {
-            color: #ff3b7e;
-        }
-
-        /* =========================
-           STORY GRID
-        ========================= */
-
-        .stories {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
-
-            gap: 22px;
-        }
-
-        /* =========================
-           STORY CARD
-        ========================= */
-
-        .story-card {
-            background: #141414;
-
-            border: 1px solid #292929;
-
-            border-radius: 15px;
-
-            overflow: hidden;
-
-            transition: 0.3s;
-
-            box-shadow:
-                0 10px 30px rgba(0,0,0,0.35);
-        }
-
-        .story-card:hover {
-            transform: translateY(-6px);
-
-            border-color: #ff347b;
-
-            box-shadow:
-                0 15px 35px rgba(255,0,100,0.12);
-        }
-
-        /* =========================
-           STORY IMAGE
-        ========================= */
-
-        .story-image {
-            width: 100%;
-
-            height: 190px;
-
-            position: relative;
-
-            background:
-                radial-gradient(
-                    circle at 25% 30%,
-                    #ff2b77,
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 75% 70%,
-                    #7226ff,
-                    transparent 35%
-                ),
-                linear-gradient(
-                    135deg,
-                    #280014,
-                    #0b0018
-                );
-        }
-
-        .story-image::after {
-            content: "TAMILKAMA";
-
-            position: absolute;
-
-            left: 50%;
-            top: 50%;
-
-            transform:
-                translate(-50%, -50%);
-
-            font-size: 28px;
-
-            font-weight: 900;
-
-            letter-spacing: 2px;
-
-            color: rgba(255,255,255,0.10);
-        }
-
-        /* =========================
-           STORY CONTENT
-        ========================= */
-
-        .story-content {
-            padding: 20px;
-        }
-
-        .category {
-            display: inline-block;
-
-            padding: 5px 10px;
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #ff1769,
-                    #9227ff
-                );
-
-            font-size: 10px;
-
-            font-weight: bold;
-
-            margin-bottom: 12px;
-        }
-
-        .story-content h3 {
-            font-size: 19px;
-
-            line-height: 1.5;
-
-            margin-bottom: 10px;
-        }
-
-        .story-content p {
-            color: #999999;
-
-            font-size: 14px;
-
-            line-height: 1.7;
-
-            margin-bottom: 18px;
-        }
-
-        /* =========================
-           READ BUTTON
-        ========================= */
-
-        .read-btn {
-            display: inline-block;
-
-            padding: 10px 17px;
-
-            border-radius: 25px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #ff1769,
-                    #9227ff
-                );
-
-            color: white;
-
-            text-decoration: none;
-
-            font-size: 13px;
-
-            font-weight: bold;
-
-            transition: 0.3s;
-        }
-
-        .read-btn:hover {
-            transform: scale(1.04);
-
-            box-shadow:
-                0 8px 20px rgba(255,0,110,0.2);
-        }
-
-        /* =========================
-           AGE NOTICE
-        ========================= */
-
-        .notice {
-            margin-top: 45px;
-
-            padding: 18px;
-
-            text-align: center;
-
-            border-radius: 10px;
-
-            background: #151515;
-
-            border: 1px solid #282828;
-
-            color: #777777;
-
-            font-size: 12px;
-
-            line-height: 1.7;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            padding: 30px 20px;
-
-            text-align: center;
-
-            background: #0d0d0d;
-
-            border-top: 1px solid #252525;
-
-            color: #666666;
-
-            font-size: 12px;
-
-            line-height: 1.8;
-        }
-
-        footer strong {
-            color: #ff397d;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 600px) {
-
-            header {
-                padding: 35px 15px;
-            }
-
-            header h1 {
-                font-size: 34px;
-            }
-
-            header p {
-                font-size: 14px;
-            }
-
-            nav a {
-                margin: 0 8px;
-            }
-
-            .container {
-                padding: 24px 13px 45px;
-            }
-
-            .welcome {
-                padding: 22px;
-            }
-
-            .welcome h2 {
-                font-size: 21px;
-            }
-
-            .section-title {
-                font-size: 23px;
-            }
-
-            .stories {
-                grid-template-columns: 1fr;
-            }
-
-            .story-image {
-                height: 200px;
-            }
-
-        }
-
-    </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>இரவுக்கதை - Tamil Crime & Horror Stories</title>
+  <meta name="description" content="தமிழ் க்ரைம், அமானுஷ்யம், திகில் மற்றும் மர்மக் கதைகளின் பிரத்யேக தளம்.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@400;600;700;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0a0a0c;
+      --card-bg: #141419;
+      --card-border: #23232e;
+      --blood-red: #c9182b;
+      --blood-hover: #e02438;
+      --text-main: #f0f0f5;
+      --text-muted: #9e9ea7;
+      --accent-crime: #f39c12;
+      --accent-horror: #9b59b6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Mukta Malar', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* Scroll progress bar */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blood-red), #ff4d61);
+      width: 0%;
+      z-index: 999;
+      transition: width 0.1s ease;
+    }
+
+    header {
+      background: rgba(10, 10, 12, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      font-size: 1.8rem;
+    }
+
+    .logo-text h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text span {
+      font-size: 0.75rem;
+      color: var(--blood-red);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 2px;
+      display: block;
+      line-height: 1;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--blood-red);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--blood-hover);
+      box-shadow: 0 0 15px rgba(201, 24, 43, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      background: var(--card-bg);
+      border-color: var(--blood-red);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: radial-gradient(circle at center, rgba(201, 24, 43, 0.15) 0%, transparent 70%);
+      border-radius: 16px;
+      margin-bottom: 2.5rem;
+      border: 1px solid rgba(201, 24, 43, 0.1);
+    }
+
+    .hero h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 1.5rem auto;
+      font-size: 1.05rem;
+    }
+
+    /* Search & Filter */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 2rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 10px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: var(--blood-red);
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .pill.active, .pill:hover {
+      background: var(--blood-red);
+      color: white;
+      border-color: var(--blood-red);
+    }
+
+    /* Story Grid */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .story-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .story-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201, 24, 43, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .story-thumb {
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+      background-color: #1a1a24;
+    }
+
+    .story-info {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-crime { background: rgba(243, 156, 18, 0.2); color: var(--accent-crime); }
+    .badge-horror { background: rgba(155, 89, 182, 0.2); color: var(--accent-horror); }
+    .badge-mystery { background: rgba(201, 24, 43, 0.2); color: #ff5266; }
+
+    .read-time {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .story-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .story-excerpt {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.6;
+    }
+
+    .story-meta {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Reader View */
+    #reader-view {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .reader-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .reader-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .reader-details {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .reader-controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 2rem;
+      padding: 10px;
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+    }
+
+    .reader-content {
+      font-size: 1.15rem;
+      line-height: 2;
+      color: #d8d8e0;
+      white-space: pre-line;
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    /* Upload Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .modal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 650px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.8rem;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      background: #0e0e12;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .form-group textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus {
+      border-color: var(--blood-red);
+    }
+
+    /* Ambient Audio status */
+    .audio-btn.playing {
+      background: var(--blood-red);
+      color: white;
+      box-shadow: 0 0 10px rgba(201, 24, 43, 0.5);
+    }
+  </style>
 </head>
-
-
 <body>
 
+  <div id="progress-bar"></div>
 
-<!-- =========================
-     HEADER
-========================= -->
+  <!-- Header -->
+  <header>
+    <div class="logo" onclick="showHome()">
+      <span class="logo-icon">🩸</span>
+      <div class="logo-text">
+        <h1>இரவுக்கதை</h1>
+        <span>CRIME & HORROR</span>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-outline audio-btn" id="ambient-toggle" onclick="toggleAtmosphereAudio()">
+        🔊 திகில் இசை
+      </button>
+      <button class="btn btn-primary" onclick="openUploadModal()">
+        + கதை எழுது
+      </button>
+    </div>
+  </header>
 
-<header>
+  <!-- Main Feed Container -->
+  <main class="container" id="feed-view">
+    <section class="hero">
+      <h2>இருளின் நடுவே உறையும் மர்மங்கள்</h2>
+      <p>நடுநிசி பயங்கள், விடைதெரியாத கொடூர குற்றங்கள் மற்றும் உண்மையான அமானுஷ்ய சம்பவங்களின் உறைவிடம்.</p>
+    </section>
 
-    <h1>TamilKama Stories</h1>
-
-    <p>
-        தமிழ் வயது வந்தோருக்கான காதல் மற்றும் உறவுக் கதைகள்
-    </p>
-
-</header>
-
-
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<nav>
-
-    <a href="#">Home</a>
-
-    <a href="#">காதல் கதைகள்</a>
-
-    <a href="#">உறவுக் கதைகள்</a>
-
-    <a href="#">காதல் அனுபவங்கள்</a>
-
-    <a href="#">உண்மைக் கதைகள்</a>
-
-    <a href="#">18+ Stories</a>
-
-</nav>
-
-
-<!-- =========================
-     MAIN
-========================= -->
-
-<div class="container">
-
-
-    <!-- SEARCH -->
-
-    <div class="search">
-
-        <input
-            type="text"
-            placeholder="🔍 கதையை தேடுங்கள்..."
-        >
-
+    <!-- Controls -->
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="கதைகளை தேடுக..." oninput="handleSearch()">
+      </div>
+      <div class="filter-pills">
+        <span class="pill active" onclick="filterCategory('All')">அனைத்தும்</span>
+        <span class="pill" onclick="filterCategory('Crime')">🔍 க்ரைம்</span>
+        <span class="pill" onclick="filterCategory('Horror')">👻 அமானுஷ்யம்</span>
+        <span class="pill" onclick="filterCategory('Mystery')">⏳ மர்மம்</span>
+      </div>
     </div>
 
+    <!-- Story Cards Grid -->
+    <div class="story-grid" id="story-grid"></div>
+  </main>
 
-    <!-- WELCOME -->
-
-    <div class="welcome">
-
-        <h2>
-            ❤️ TamilKama Stories
-        </h2>
-
-        <p>
-            தமிழ் மொழியில் காதல், உறவுகள் மற்றும்
-            வயது வந்தோருக்கான உணர்வுபூர்வமான
-            கதைகளை படிக்கலாம்.
-            புதிய கதைகள் தொடர்ந்து சேர்க்கப்படும்.
-        </p>
-
+  <!-- Reader View -->
+  <section class="container" id="reader-view">
+    <button class="btn btn-outline" onclick="showHome()" style="margin-bottom: 1.5rem;">
+      ← பின்செல்ல
+    </button>
+    <div class="reader-header">
+      <h2 class="reader-title" id="reader-title"></h2>
+      <div class="reader-details">
+        <span id="reader-author"></span> • 
+        <span id="reader-category"></span> • 
+        <span id="reader-time"></span>
+      </div>
+    </div>
+    
+    <div class="reader-controls">
+      <button class="btn btn-outline" onclick="changeFontSize(-1)">A-</button>
+      <button class="btn btn-outline" onclick="changeFontSize(1)">A+</button>
     </div>
 
+    <div class="reader-content" id="reader-body"></div>
+  </section>
 
-    <!-- SECTION -->
-
-    <h2 class="section-title">
-
-        Latest <span>Stories</span>
-
-    </h2>
-
-
-    <!-- STORY CARDS -->
-
-    <div class="stories">
-
-
-        <!-- STORY 1 -->
-
-        <div class="story-card">
-
-            <div class="story-image"></div>
-
-            <div class="story-content">
-
-                <div class="category">
-                    18+ STORY
-                </div>
-
-                <h3>
-                    எதிர்பாராத ஒரு சந்திப்பு
-                </h3>
-
-                <p>
-                    பல வருடங்களுக்குப் பிறகு நடந்த
-                    ஒரு எதிர்பாராத சந்திப்பு,
-                    அவர்களின் வாழ்க்கையில்
-                    புதிய திருப்பத்தை ஏற்படுத்தியது.
-                </p>
-
-                <a href="#" class="read-btn">
-                    Read Story →
-                </a>
-
-            </div>
-
+  <!-- Upload Modal -->
+  <div class="modal-overlay" id="upload-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-weight: 700;">புதிய கதையைப் பகிருங்கள்</h3>
+        <button class="close-btn" onclick="closeUploadModal()">&times;</button>
+      </div>
+      <form id="story-form" onsubmit="handleStorySubmit(event)">
+        <div class="form-group">
+          <label>கதையின் தலைப்பு</label>
+          <input type="text" id="form-title" required placeholder="உதா: 12-ஆம் எண் பங்களா">
         </div>
-
-
-        <!-- STORY 2 -->
-
-        <div class="story-card">
-
-            <div class="story-image"></div>
-
-            <div class="story-content">
-
-                <div class="category">
-                    LOVE STORY
-                </div>
-
-                <h3>
-                    அக்காவுடன் நடந்த அந்த நாள்
-                </h3>
-
-                <p>
-                    மறக்க முடியாத ஒரு நாள்,
-                    குடும்பத்திற்குள் மறைந்திருந்த
-                    ஒரு உண்மையை வெளிச்சத்திற்கு
-                    கொண்டு வந்தது.
-                </p>
-
-                <a href="#" class="read-btn">
-                    Read Story →
-                </a>
-
-            </div>
-
+        <div class="form-group">
+          <label>எழுத்தாளர் பெயர்</label>
+          <input type="text" id="form-author" required placeholder="உங்கள் பெயர்">
         </div>
-
-
-        <!-- STORY 3 -->
-
-        <div class="story-card">
-
-            <div class="story-image"></div>
-
-            <div class="story-content">
-
-                <div class="category">
-                    RELATIONSHIP
-                </div>
-
-                <h3>
-                    அந்த வீட்டில் நடந்த ரகசியம்
-                </h3>
-
-                <p>
-                    யாருக்கும் தெரியாமல் நடந்த
-                    ஒரு சம்பவம், பின்னர் பல
-                    கேள்விகளை எழுப்பியது.
-                </p>
-
-                <a href="#" class="read-btn">
-                    Read Story →
-                </a>
-
-            </div>
-
+        <div class="form-group">
+          <label>பிரிவு (Category)</label>
+          <select id="form-category">
+            <option value="Horror">அமானுஷ்யம் (Horror)</option>
+            <option value="Crime">க்ரைம் (Crime Investigation)</option>
+            <option value="Mystery">உண்மை மர்மம் (Mystery)</option>
+          </select>
         </div>
-
-
-        <!-- STORY 4 -->
-
-        <div class="story-card">
-
-            <div class="story-image"></div>
-
-            <div class="story-content">
-
-                <div class="category">
-                    REAL STORY
-                </div>
-
-                <h3>
-                    அந்த இரவு நடந்தது என்ன?
-                </h3>
-
-                <p>
-                    சாதாரணமாக தொடங்கிய அந்த இரவு,
-                    எதிர்பாராத ஒரு திருப்பத்துடன்
-                    முடிந்தது.
-                </p>
-
-                <a href="#" class="read-btn">
-                    Read Story →
-                </a>
-
-            </div>
-
+        <div class="form-group">
+          <label>அட்டைப்பட URL (Image URL - விருப்பத்தேர்வு)</label>
+          <input type="url" id="form-image" placeholder="https://images.unsplash.com/...">
         </div>
-
-
-        <!-- STORY 5 -->
-
-        <div class="story-card">
-
-            <div class="story-image"></div>
-
-            <div class="story-content">
-
-                <div class="category">
-                    ROMANCE
-                </div>
-
-                <h3>
-                    மறக்க முடியாத அந்த சந்திப்பு
-                </h3>
-
-                <p>
-                    ஒரு சிறிய சந்திப்பு எப்படி
-                    நீண்ட நாட்கள் நினைவில்
-                    நிற்கும் கதையாக மாறியது?
-                </p>
-
-                <a href="#" class="read-btn">
-                    Read Story →
-                </a>
-
-            </div>
-
+        <div class="form-group">
+          <label>கதையின் சுருக்கம் (Short Synopsis)</label>
+          <input type="text" id="form-excerpt" required placeholder="கதையின் ஒரு வரி சுருக்கம்">
         </div>
-
-
-        <!-- STORY 6 -->
-
-        <div class="story-card">
-
-            <div class="story-image"></div>
-
-            <div class="story-content">
-
-                <div class="category">
-                    MYSTERY
-                </div>
-
-                <h3>
-                    கதவுக்கு பின்னால் இருந்த ரகசியம்
-                </h3>
-
-                <p>
-                    பல நாட்களாக மூடப்பட்டிருந்த
-                    அந்த அறைக்குள் இருந்த ரகசியம்
-                    எதிர்பாராத நேரத்தில் வெளிவந்தது.
-                </p>
-
-                <a href="#" class="read-btn">
-                    Read Story →
-                </a>
-
-            </div>
-
+        <div class="form-group">
+          <label>முழுக் கதை</label>
+          <textarea id="form-content" required placeholder="உங்கள் திகில் அல்லது க்ரைம் கதையை இங்கு விரிவாக எழுதுங்கள்..."></textarea>
         </div>
-
-
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px;">
+          பதிவேற்று (Publish Story)
+        </button>
+      </form>
     </div>
+  </div>
 
+  <script>
+    // Initial Seed Stories
+    const initialStories = [
+      {
+        id: '1',
+        title: 'கொல்லிமலை பங்களாவின் ரகசியம்',
+        author: 'பாலச்சந்தர்',
+        category: 'Horror',
+        time: '5 நிமிடம்',
+        image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80',
+        excerpt: '1984-ல் அந்த பிரிட்டிஷ் பங்களாவில் தங்கிய எவரும் உயிரோடு திரும்பவில்லை. 40 வருடங்களுக்குப் பிறகு திறக்கப்பட்ட கதவு...',
+        content: `அன்று நள்ளிரவு 12:15 மணி இருக்கும். கொல்லிமலையின் உச்சிப் பகுதியில் அமைந்திருந்த அந்தப் பழைய பிரிட்டிஷ் பங்களாவைச் சுற்றிலும் கடும் பனிமூட்டம் சூழ்ந்திருந்தது.
 
-    <!-- NOTICE -->
+1984 ஆம் ஆண்டுக்குப் பிறகு அந்த பங்களாவின் மரக் கதவை யாரும் தொட்டதில்லை. உள்ளே சென்ற நான்கு வனத்துறை அதிகாரிகள் என்ன ஆனார்கள் என்ற தகவல் இதுவரை யாரிடமும் இல்லை. 
 
-    <div class="notice">
+விசாரணைக்காகச் சென்ற இன்ஸ்பெக்டர் கார்த்திக் தனது டார்ச் லைட்டை எரிய வைத்தார். உள்ளே நுழையும் போதே பழைய ரத்த வாடையும் அழுகிய மரத்தின் துர்நாற்றமும் அடித்தது. சுவரில் ரத்தத்தால் எழுதப்பட்டிருந்த அந்த வாசகம் கார்த்திக்கின் முதுகெலும்பை உறைய வைத்தது:
 
-        🔞 இந்த website-ல் வயது வந்தோருக்கான
-        காதல் மற்றும் உறவு சார்ந்த கதைகள் இடம்பெறலாம்.
-        18 வயதுக்கு மேற்பட்டவர்களுக்கான உள்ளடக்கம்.
+"இங்கிருந்து திரும்பிச் செல்ல எவனுக்கும் அனுமதியில்லை!"
 
-    </div>
+திடீரென பின்னால் கதவு பலமாக மூடிக்கொண்டது. டார்ச் லைட் படபடவென மின்னத் தொடங்கியது...`
+      },
+      {
+        id: '2',
+        title: 'நள்ளிரவு 2 மணி அழைப்பு',
+        author: 'விக்ரம்',
+        category: 'Crime',
+        time: '7 நிமிடம்',
+        image: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80',
+        excerpt: 'நகர காவல் நிலையத்திற்கு தொடர்ச்சியாக வரும் மர்ம போன் கால். பேசும் நபர் ஒவ்வொரு முறையும் ஒரு கொலையை முன்கூட்டியே அறிவிக்கிறான்.',
+        content: `சென்னையின் மத்திய காவல் கட்டுப்பாட்டு அறை வழக்கம்போல பரபரப்பாக இயங்கிக்கொண்டிருந்தது. 
 
+சரியாக 02:00 மணிக்கு போன் அடித்தது. இன்ஸ்பெக்டர் ராகவன் போனை எடுத்தார். 
 
-</div>
+மறுமுனையில் ஒரு கணத்த குரல்: "இன்னும் பத்து நிமிடங்களில் அண்ணா நகர் 3-வது அவென்யூவில் உள்ள ஏடிஎம் அருகில் ஒரு சடலம் விழும். முடிந்தால் காப்பாற்றிக் கொள்ளுங்கள்."
 
+கால் துண்டிக்கப்பட்டது. ராகவன் உடனே ரோந்து வாகனத்தை அனுப்பினார். ஆனால் அவர்கள் அங்கு சென்றடையும் போது, தொழிலதிபர் சோமசுந்தரம் கத்திக் குத்துக் காயங்களுடன் உயிரிழந்து கிடந்தார்.
 
-<!-- =========================
-     FOOTER
-========================= -->
+கொலைகாரன் யார்? காவல்துறைக்கே சவால் விடும் அளவுக்கு அவனுக்கு எப்படி எல்லாமே முன்கூட்டியே தெரிகிறது?`
+      }
+    ];
 
-<footer>
+    // State
+    let stories = JSON.parse(localStorage.getItem('tamil_stories')) || initialStories;
+    let currentCategory = 'All';
+    let currentFontSize = 1.15;
+    let audioCtx = null;
+    let isPlayingAudio = false;
 
-    © 2026 <strong>TamilKama Stories</strong>
+    // Save to LocalStorage
+    function saveStories() {
+      localStorage.setItem('tamil_stories', JSON.stringify(stories));
+    }
 
-    <br>
+    // Render Story Cards
+    function renderStories(dataToRender = stories) {
+      const grid = document.getElementById('story-grid');
+      grid.innerHTML = '';
 
-    All Rights Reserved.
+      if (dataToRender.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 3rem;">கதைகள் எதுவும் கிடைக்கவில்லை.</div>';
+        return;
+      }
 
-</footer>
+      dataToRender.forEach(story => {
+        const card = document.createElement('div');
+        card.className = 'story-card';
+        card.onclick = () => openReader(story.id);
 
+        const badgeClass = story.category === 'Crime' ? 'badge-crime' : (story.category === 'Horror' ? 'badge-horror' : 'badge-mystery');
 
+        card.innerHTML = `
+          <img src="${story.image || 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80'}" class="story-thumb" alt="${story.title}">
+          <div class="story-info">
+            <div class="badge-row">
+              <span class="badge ${badgeClass}">${story.category}</span>
+              <span class="read-time">${story.time || '5 நிமிடம்'}</span>
+            </div>
+            <h3 class="story-title">${story.title}</h3>
+            <p class="story-excerpt">${story.excerpt}</p>
+            <div class="story-meta">
+              <span>✍️ ${story.author}</span>
+              <span>வாசிக்க →</span>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Category Filter
+    function filterCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.pill').forEach(pill => pill.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (cat === 'All') {
+        renderStories(stories);
+      } else {
+        const filtered = stories.filter(s => s.category.toLowerCase() === cat.toLowerCase());
+        renderStories(filtered);
+      }
+    }
+
+    // Search
+    function handleSearch() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const filtered = stories.filter(s => 
+        s.title.toLowerCase().includes(query) || 
+        s.excerpt.toLowerCase().includes(query) ||
+        s.author.toLowerCase().includes(query)
+      );
+      renderStories(filtered);
+    }
+
+    // Modal controls
+    function openUploadModal() {
+      document.getElementById('upload-modal').style.display = 'flex';
+    }
+
+    function closeUploadModal() {
+      document.getElementById('upload-modal').style.display = 'none';
+    }
+
+    // Submit new story
+    function handleStorySubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('form-title').value;
+      const author = document.getElementById('form-author').value;
+      const category = document.getElementById('form-category').value;
+      const image = document.getElementById('form-image').value;
+      const excerpt = document.getElementById('form-excerpt').value;
+      const content = document.getElementById('form-content').value;
+
+      const newStory = {
+        id: Date.now().toString(),
+        title,
+        author,
+        category,
+        image: image || 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80',
+        excerpt,
+        content,
+        time: Math.ceil(content.split(' ').length / 150) + ' நிமிடம்'
+      };
+
+      stories.unshift(newStory);
+      saveStories();
+      renderStories(stories);
+      closeUploadModal();
+      document.getElementById('story-form').reset();
+    }
+
+    // Reader Mode
+    function openReader(storyId) {
+      const story = stories.find(s => s.id === storyId);
+      if (!story) return;
+
+      document.getElementById('reader-title').innerText = story.title;
+      document.getElementById('reader-author').innerText = 'எழுத்தாளர்: ' + story.author;
+      document.getElementById('reader-category').innerText = story.category;
+      document.getElementById('reader-time').innerText = story.time || '5 நிமிடம்';
+      document.getElementById('reader-body').innerText = story.content;
+
+      document.getElementById('feed-view').style.display = 'none';
+      document.getElementById('reader-view').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showHome() {
+      document.getElementById('reader-view').style.display = 'none';
+      document.getElementById('feed-view').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function changeFontSize(val) {
+      currentFontSize = Math.max(0.9, Math.min(1.8, currentFontSize + val * 0.1));
+      document.getElementById('reader-body').style.fontSize = currentFontSize + 'rem';
+    }
+
+    // Scroll Progress
+    window.onscroll = function() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    };
+
+    // Eerie Drone Audio Synthesizer (No external MP3 required)
+    function toggleAtmosphereAudio() {
+      const btn = document.getElementById('ambient-toggle');
+      if (!isPlayingAudio) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Low heartbeat / drone
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(45, audioCtx.currentTime); // Deep horror frequency
+        
+        // Filter for dark ambient sound
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(120, audioCtx.currentTime);
+
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+
+        window.ambientOsc = osc;
+        isPlayingAudio = true;
+        btn.classList.add('playing');
+        btn.innerText = '🔇 இசையை நிறுத்து';
+      } else {
+        if (window.ambientOsc) {
+          window.ambientOsc.stop();
+        }
+        isPlayingAudio = false;
+        btn.classList.remove('playing');
+        btn.innerText = '🔊 திகில் இசை';
+      }
+    }
+
+    // Initial Load
+    renderStories(stories);
+  </script>
 </body>
 </html>
-```
